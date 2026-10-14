@@ -1,0 +1,10 @@
+@font-face{font-family:Anton;src:url('/assets/font-0.ttf');font-display:swap}
+@font-face{font-family:Archivo;src:url('/assets/font-1.ttf');font-weight:100 900;font-display:swap}
+:root{color-scheme:dark;background:#090909;--ink:#090909;--bone:#e8e3d8;--vermilion:#e8232a}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:transparent}html{overscroll-behavior:none}body{overflow-x:hidden}
+#gl{display:block;position:fixed;inset:0;width:100vw;height:100vh;z-index:0;outline:none;touch-action:pan-y}
+#gl:focus-visible{outline:1px solid #e8e3d8;outline-offset:-3px}
+.scroll-track{position:relative;pointer-events:none;background:transparent;margin:0;padding:0}
+.scroll-track>section{height:120vh;height:120lvh;margin:0;padding:0;pointer-events:none;background:transparent}
+.no-webgl #gl{background:#090909 url('/assets/ravers-original-logo.png') center/contain no-repeat}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

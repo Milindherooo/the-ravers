@@ -1,0 +1,22 @@
+{
+  "skiper": {
+    "url": "https://skiper-ui.com/registry/skiper40.json",
+    "sha256": "3d0ba930aaf6d693ef59fe68e98449b8ecfe06c58191a11811f2eb350329d09f",
+    "attribution": "Skiper UI by Gurvinder Singh; public footer credit included"
+  },
+  "watermelon": {
+    "url": "https://github.com/WatermelonCorp/watermelon-platform",
+    "commit": "0d24a114124f4f28032340099fb458cf5de5a062",
+    "path": "src/data/contents/animated-components/card-split-accordian/original.tsx",
+    "sha256": "45abd3a17025649a8b33d6170401fa75357361739711839f647b942b2f58108a",
+    "registryStatus": "Registry URL returned HTTP 403; official maintained GitHub source retrieved."
+  },
+  "taste": {
+    "commit": "d237dd399d57524945c0c81327da5da19f7a468d",
+    "dials": {
+      "DESIGN_VARIANCE": 9,
+      "MOTION_INTENSITY": 8,
+      "VISUAL_DENSITY": 3
+    }
+  }
+}

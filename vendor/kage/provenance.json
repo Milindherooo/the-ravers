@@ -1,0 +1,21 @@
+{
+  "referenceSha256": "c8e06b90397ac246baf0ab6f32f5f6b570acc6fe03c7009f711b579fb72d9f49",
+  "adaptedSha256": "de4efdc775291de8d5a00e307d679fbc9675ad0937b315cff7065a6db19052ae",
+  "source": "https://threeui.com/source-code/kage-landing-page.json",
+  "transportRecovery": [
+    "Removed injected image constructor shim",
+    "Restored manifest asset paths and removed injected crossorigin attributes",
+    "Re-embedded verified font bytes into original data URLs"
+  ],
+  "changes": [
+    "Original warehouse geometry, scene props, camera stops and brand copy",
+    "Anton and Archivo typography",
+    "Neutral grade, lower bloom, no chromatic aberration",
+    "Canvas-only viewport with transparent chapter anchors; DOM UI and live cards retired",
+    "Shared bounded planar puddle reflections and instanced environment details",
+    "Safe Hermite/quaternion camera path with separate portrait composition",
+    "Original supplied logo shader choreography and keyboard-only ambient controls",
+    "Leaves, temple, moon, cursor particles and plant cutouts not instantiated",
+    "Opt-in synthesized audio, pause control, context-loss fallback and disposal"
+  ]
+}

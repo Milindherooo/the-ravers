@@ -1,0 +1,7 @@
+*.zip
+
+node_modules/
+.sites-runtime/
+.env.local
+/index.html
+.studio/

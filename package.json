@@ -1,0 +1,34 @@
+{
+  "name": "ravers-immersive-world",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python src/ravers/build.py && node scripts/build-ui.mjs",
+    "test": "node tests/ravers-source.test.cjs && node tests/camera.test.cjs && node tests/choreography.test.cjs && tsc --noEmit && node tests/studio-installation.test.mjs",
+    "dev": "node scripts/prepare-dev.mjs && vite --config vite.config.mjs"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "motion": "^14.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.4.0",
+    "react-use-measure": "^2.1.7",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@openai/codex-sdk": "^0.162.1",
+    "@tailwindcss/cli": "^4.1.18",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "cssstudio": "^1.2.0",
+    "esbuild": "^0.25.12",
+    "motion-studio": "^2.1.0",
+    "shadcn": "latest",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.7"
+  }
+}
