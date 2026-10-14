@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "python src/ravers/build.py && node scripts/build-ui.mjs",
-    "test": "node tests/ravers-source.test.cjs && node tests/camera.test.cjs && node tests/choreography.test.cjs && tsc --noEmit && node tests/studio-installation.test.mjs",
+    "test": "node tests/ravers-source.test.cjs && node tests/camera.test.cjs && node tests/choreography.test.cjs && node tests/grade.test.cjs && tsc --noEmit && node tests/studio-installation.test.mjs",
     "dev": "node scripts/prepare-dev.mjs && vite --config vite.config.mjs"
   },
   "dependencies": {
