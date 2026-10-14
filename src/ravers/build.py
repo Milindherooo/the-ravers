@@ -1,5 +1,5 @@
 from pathlib import Path
-import re,json,hashlib,shutil
+import re,json,hashlib,shutil,sys
 root=Path(__file__).resolve().parents[2];up=root/'vendor/kage/upstream';bundle=json.loads((up/'bundle.json').read_text())
 # Never accept a changed baseline or binary.
 for f in bundle['files']+bundle['assets']:
@@ -35,13 +35,16 @@ jobs="""const JOBS = [
  ['Opening the room',()=>{initPost();buildCards();rvWire();WORD.glyphs.forEach(m=>m.layers.set(2));layoutWord();measure();if(WANT_SHADOW){WORLD.key.shadow.autoUpdate=false;WORLD.key.shadow.needsUpdate=true;}}]
 ];
 """
-s=s[:a]+'\n'.join((root/'src/ravers'/name).read_text() for name in ['world.js','environment.js','camera.js','choreography.js','host.js'])+'\n'+jobs+s[b:]
+s=s[:a]+'\n'.join((root/'src/ravers'/name).read_text() for name in ['world.js','environment.js','grade.js','camera.js','choreography.js','host.js','capture.js'])+'\n'+jobs+s[b:]
 # Any failed construction job keeps the readable fallback; don't call a partial scene complete.
 s=s.replace('if (i <= 1) return fallback(err);','return fallback(err);')
 s=s.replace("window.__kage = window.__secret = { RIG:","window.__ravers = window.__kage = window.__secret = { RIG:")
 # A paused secondary view must repaint when focus changes, and after scrolling into view.
 s=s.replace("c.userData.want=1);","{c.userData.want=1;RV.dirty=true;});").replace("c.userData.want=0);","{c.userData.want=0;RV.dirty=true;});")
 s=s.replace("if (cardAlpha(C.el) < .995) continue;", "if (cardAlpha(C.el) < .995 || C.el.closest('.split-body[aria-hidden=\"true\"]')) continue;")
-(root/'dist/index.html').write_text(s)
+# `build.py preview-<role>.html` writes a review page beside index.html and leaves provenance alone.
+out=sys.argv[1] if len(sys.argv)>1 else 'index.html';assert re.fullmatch(r'(index|preview-[a-z0-9-]+)\.html',out),out
+(root/'dist'/out).write_text(s)
+if out!='index.html':print('Built review page dist/'+out);sys.exit(0)
 (root/'vendor/kage/provenance.json').write_text(json.dumps({'referenceSha256':hashlib.sha256((reference/'kage.html').read_bytes()).hexdigest(),'adaptedSha256':hashlib.sha256(s.encode()).hexdigest(),'source':'https://threeui.com/source-code/kage-landing-page.json','transportRecovery':['Removed injected image constructor shim','Restored manifest asset paths and removed injected crossorigin attributes','Re-embedded verified font bytes into original data URLs'],'changes':['Original warehouse geometry, scene props, camera stops and brand copy','Anton and Archivo typography','Neutral grade, lower bloom, no chromatic aberration','Canvas-only viewport with transparent chapter anchors; DOM UI and live cards retired','Shared bounded planar puddle reflections and instanced environment details','Safe Hermite/quaternion camera path with separate portrait composition','Original supplied logo shader choreography and keyboard-only ambient controls','Leaves, temple, moon, cursor particles and plant cutouts not instantiated','Opt-in synthesized audio, pause control, context-loss fallback and disposal']},indent=2))
 print('Verified all',len(bundle['files'])+len(bundle['assets']),'registered files and assets; built RAVERS derivative.')

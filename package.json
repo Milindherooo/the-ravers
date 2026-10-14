@@ -26,6 +26,7 @@
     "cssstudio": "^1.2.0",
     "esbuild": "^0.25.12",
     "motion-studio": "^2.1.0",
+    "playwright-core": "1.56.1",
     "shadcn": "latest",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",

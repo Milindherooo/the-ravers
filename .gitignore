@@ -5,3 +5,5 @@ node_modules/
 .env.local
 /index.html
 .studio/
+dist/preview-*.html
+review/
