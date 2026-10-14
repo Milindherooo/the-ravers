@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/devinilabs/pro-skill",
+  "upstream": "https://github.com/MengTo/Skills (snapshot 22bacc4, per the mirror's README)",
+  "commit": "134f0527a5400b4b51e017d6e17347289d60cec2",
+  "license": "MIT (Copyright 2026 Meng To)",
+  "subset": "SKILL.md files and references for the roles in docs/agents/WORKFLOW.md; demos, scripts and runtime bundles omitted.",
+  "use": "Agent references only. Not bundled into dist/."
+}

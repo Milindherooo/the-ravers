@@ -12,6 +12,20 @@ Each role below runs in its own agent context with its own brief. Roles share th
 6. **Critic** (writes no code). Renders stills and video, scores them against the art direction and `vendor/taste-skill/references/critique.md`, and writes `docs/agents/CRITIQUE.md` with ranked fixes, each addressed to the role that owns it.
 7. **Integration owner.** Routes the critique back to the owning roles (one fix round per role, in its existing context). Then builds, runs tests, renders the final stills and video, and publishes.
 
+## Skill references per role
+
+Two MIT skill libraries are vendored for the agents (not bundled into `dist/`): `vendor/taste-skill/` (art direction, colour, motion budget, critique) and a subset of `vendor/pro-skill/` (Three.js scroll worlds, weather, VFX, camera, performance, verification). `TS` and `PS` below abbreviate those two folders. Read the files listed for your role before acting; where they conflict with the shared contract below, the contract wins.
+
+| Role | Read first |
+| --- | --- |
+| Art director | TS `SKILL.md`, `references/{colour,motion,critique,tells}.md`; PS `web-design/build-threejs-scroll-worlds/SKILL.md`, its `references/world-bible.md` and `references/kage-anatomy.md` (this hero derives from Kage); PS `web-design/build-awwwards-quality-sites` |
+| Environment and lighting | ART-DIRECTION; PS `build-threejs-scroll-worlds` (geometry, materials, lighting sections) and `references/realtime-architecture.md`; PS `web-design/threejs-weather` (wet ground, puddles, rain); PS `game-development/optimize-threejs-games`, `build-mobile-threejs-games` |
+| Colour and post | ART-DIRECTION; TS `references/colour.md`; PS `build-threejs-scroll-worlds` (lighting and post) and `references/quality-and-qa.md`; PS `game-development/create-game-vfx` (quality tiers) |
+| Camera director | ART-DIRECTION; PS `build-threejs-scroll-worlds` (scroll mapping and camera sections), `references/scroll-conductor.js`; PS `game-development/build-game-camera-controls` |
+| Motion choreographer | ART-DIRECTION; TS `references/motion.md`; PS `game-development/create-game-vfx`, `codex/optimize-web-animations` |
+| Critic | ART-DIRECTION; TS `references/critique.md`, `tells.md`; PS `codex/iterate-until-verified`, `codex/audit-reference-originality` (originality against the Kage reference), `build-threejs-scroll-worlds/references/quality-and-qa.md` |
+| Integration owner | PS `optimize-threejs-games`, `quality-and-qa.md`, `codex/iterate-until-verified` |
+
 Each role may update the assertions for its own module in `tests/`. It must not weaken coverage, and it must update the numbers when it changes what they count (puddles, fog layers, samples).
 
 ## Shared contract
