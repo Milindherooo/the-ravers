@@ -4,6 +4,9 @@
 // checks composition and motion, not frame rate.
 //
 //   node scripts/capture.mjs stills [--page index.html] [--out review/stills] [--size 1440x900] [--portrait]
+//   node scripts/capture.mjs views  --views views.json [--page …] [--out …] [--size …]
+//        views.json: [{"name":"booth-low","progress":3,"pos":[x,y,z],"target":[x,y,z],"fov":40}, …]
+//        Renders the world state at each progress from a free camera (planned views, debugging).
 //   node scripts/capture.mjs video  [--page index.html] [--out review/video] [--size 1280x720]
 //                                   [--fps 30] [--seconds 26] [--reduced]
 import {createServer} from 'node:http';
@@ -102,5 +105,18 @@ async function video() {
  console.log('wrote', mp4);
 }
 
-try {mode === 'video' ? await video() : await stills();}
+async function views() {
+ const list = JSON.parse(await readFile(opt('views', 'views.json'), 'utf8'));
+ await rm(out, {recursive: true, force: true}); await mkdir(out, {recursive: true});
+ const {tab, ctx, errors} = await open(W, H, flag('reduced'));
+ for (const v of list) {
+  await tab.evaluate(v => {const c = window.__ravers.capture; return c.look(c.scrollFor(v.progress), v.pos, v.target, v.fov);}, v);
+  await tab.screenshot({path: join(out, `${v.name}.png`), timeout: 180000});
+  console.log(v.name);
+ }
+ if (errors.length) console.log('page errors:\n' + errors.join('\n'));
+ await ctx.close();
+}
+
+try {mode === 'video' ? await video() : mode === 'views' ? await views() : await stills();}
 finally {await browser.close(); server.close();}

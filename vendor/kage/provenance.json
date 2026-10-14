@@ -1,6 +1,6 @@
 {
   "referenceSha256": "c8e06b90397ac246baf0ab6f32f5f6b570acc6fe03c7009f711b579fb72d9f49",
-  "adaptedSha256": "2f74d048b5a9ca6e6ec9af33e6f8141cad828c438494075847331502d0efb31a",
+  "adaptedSha256": "410b57a9eee1ab961edeab2c8c3c21cc6e866b18036875fee2c8c7faafd17563",
   "source": "https://threeui.com/source-code/kage-landing-page.json",
   "transportRecovery": [
     "Removed injected image constructor shim",
