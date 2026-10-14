@@ -44,6 +44,7 @@ Build a review page and render it. Never judge a change you have not looked at.
 python src/ravers/build.py preview-<role>.html          # writes dist/preview-<role>.html (git-ignored)
 node scripts/capture.mjs stills --page preview-<role>.html --out review/<role> [--portrait]
 node scripts/capture.mjs video  --page preview-<role>.html --out review/<role>-video --fps 12 --seconds 20 --size 960x540
+python scripts/metrics.py review/<role>/*.png            # ART-DIRECTION §7 metrics: dark%, redTint%, clip%, …
 npm test
 ```
 
